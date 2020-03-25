@@ -1,0 +1,48 @@
+     iter     Obj. Fun         d1         d2
+        1       2.0000     1.0000     1.0000
+        2       2.9802     1.7688     1.2114
+        3       3.3126     1.8715     1.4410
+        4       5.5540     4.4988     1.0552
+        5       5.4509     4.2105     1.2404
+        6       4.5776     2.4672     2.1104
+        7       5.3243     3.1757     2.1485
+        8       5.0409     2.5894     2.4515
+        9       4.8687     2.4973     2.3714
+       10       4.8606     2.4553     2.4053
+       11       4.8532     2.4400     2.4132
+       12       4.8425     2.4419     2.4005
+       13       4.8009     2.4531     2.3478
+       14       4.7819     2.5173     2.2646
+       15       4.7685     2.5352     2.2334
+       16       4.7680     2.5397     2.2282
+       17       4.7680     2.5396     2.2284
+ 
+ 
+   exitflag  constrviolation 
+          1       2.1210e-06 
+
+                                c(1)                                 c(2)                                 c(3)                                 c(4)                                 c(5)                                 c(6)                                 c(7)                                 c(8) 
+                         -7.7869e-01                          -7.6721e-01                          -7.5599e-01                          -7.7625e-01                          -2.3572e-01                           2.1210e-06                          -1.3792e-06                          -7.2710e-02 
+ 
+           response_d0_LC1_LS1 (l=1)            response_d0_LC1_LS2 (l=2)            response_d0_LC2_LS1 (l=3)            response_d0_LC2_LS2 (l=4)            probability_LC1_LS1 (l=5)            probability_LC1_LS2 (l=6)            probability_LC2_LS1 (l=7)            probability_LC2_LS2 (l=8) 
+                          5.5327e-02                           5.8196e-02                           6.1003e-02                           5.5938e-02                           3.8214e-02                           5.0000e-02                           5.0000e-02                           4.6364e-02 
+
+
+----- ACTIVE CONSTRAINTS ----- 
+    constr_danos_LC1_LS2     c(6)=   2.1210e-06           prob_failure_LC1_LS2 (l=6)   5.0000e-02
+    constr_danos_LC2_LS1     c(7)=  -1.3792e-06           prob_failure_LC2_LS1 (l=7)   5.0000e-02
+
+
+
+----- VIOLATED CONSTRAINTS ----- 
+
+
+ 
+----- DAMAGED CONFIGURATIONS WHERE THE LIMIT-STATE IS OVERCOME -----  
+
+                 LS=2  LC=1           constraintValue=-0.014602   DamagedConfiguration=25     ResponseValue=0.25365    ProbabilityValue=0.015 
+                 LS=2  LC=1            constraintValue=-0.45585   DamagedConfiguration=26     ResponseValue=0.36396    ProbabilityValue=0.015 
+                 LS=2  LC=1            constraintValue=-0.43111   DamagedConfiguration=27     ResponseValue=0.35778    ProbabilityValue=0.015 
+                 LS=1  LC=2            constraintValue=-0.31807   DamagedConfiguration=34     ResponseValue=0.32952    ProbabilityValue=0.015 
+                 LS=1  LC=2            constraintValue=-0.16642   DamagedConfiguration=36      ResponseValue=0.2916    ProbabilityValue=0.015 
+                 LS=1  LC=2            constraintValue=-0.02493   DamagedConfiguration=58     ResponseValue=0.25623     ProbabilityValue=0.01 
