@@ -290,14 +290,25 @@ function [x_CDFs,f_CDFs] = builtCDFs(modelPrm,damConfPrm,G)
 for h=1:modelPrm.nLC
     for k=1:modelPrm.nDcon
         G_h_k = G{h,1}{k,1};
-        [x_limitState_k,index] = sort(G_h_k,'ascend');
-        f_PDF_limitState_k=[];
-        f_CDF_limitState_k=[];
+        [x_prov,index] = sort(G_h_k,'ascend');
+
+        f_prov = damConfPrm.pDamages(index);
+
+        x_limitState_k = unique(x_prov); % sorted and non-repeated values of x_prov
+        f_PDF_limitState_k = zeros(1,length(x_limitState_k))';
         for i=1:length(x_limitState_k)
-            f_PDF_limitState_k = [f_PDF_limitState_k;damConfPrm.pDamages(index(i))];
-            f_CDF_limitState_k = [f_CDF_limitState_k;sum(f_PDF_limitState_k)];
-        end
-        
+             f_PDF_limitState_k(i) = sum(f_prov(x_limitState_k(i) == x_prov));
+        end 
+
+        f_CDF_limitState_k = cumsum(f_PDF_limitState_k);
+
+        if length(x_limitState_k) == 1 % The CDF can not have only 1 value
+            x_value=x_limitState_k;
+            epsilon = 1e-8;
+            x_limitState_k = [x_value-epsilon;x_value;x_value+epsilon];    
+            f_CDF_limitState_k = [0;0.5;1];
+        end     
+
         x_CDFs{h,1}{k,1} = x_limitState_k;
         f_CDFs{h,1}{k,1} = f_CDF_limitState_k;
     end
