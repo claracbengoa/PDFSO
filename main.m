@@ -273,8 +273,8 @@ for h=1:modelPrm.nLC
     for k=1:modelPrm.nDcon
         for g=1:damConfPrm.nDamages
             resp(g,:) = limStatePrm.resp{h,1}{k,1}(d,limStatePrm.CfDamages{h,1}{k,1}(g,:));
-            G_h_k(g,:) = limStatePrm.limitStateFun{h,1}{k,1}(resp(g,:),limStatePrm.respMax{h,1}{k,1});
         end
+        G_h_k = limStatePrm.limitStateFun{h,1}{k,1}(resp,limStatePrm.respMax{h,1}{k,1});
         G{h,1}{k,1} = G_h_k;
         responseDamagedConf{h,1}{k,1} = resp;
     end
@@ -302,6 +302,10 @@ for h=1:modelPrm.nLC
 
         f_CDF_limitState_k = cumsum(f_PDF_limitState_k);
 
+        if abs(x_limitState_k(1))<=5e-4 % G negtive but active. Modify the value to 1e-8
+            x_limitState_k(1)=1e-8;
+        end
+        
         if length(x_limitState_k) == 1 % The CDF can not have only 1 value
             x_value=x_limitState_k;
             epsilon = 1e-8;
